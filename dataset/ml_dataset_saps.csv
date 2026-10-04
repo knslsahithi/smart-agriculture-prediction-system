@@ -1,0 +1,21 @@
+﻿Sno.,N  (kg/ha),P (kg/ha),K (kg/ha),Temperature (°C),Humidity (%),pH, Rainfall (mm),Soil Type,Season,Area (ha),Crop Label
+1,90,42,43,20.9,82,6.5,202.9,Loamy,Kharif,1.2,Rice
+2,85,58,41,21.8,80,6.8,226.5,Clay,Kharif,0.8,Rice
+3,60,55,44,23.4,82,6.3,263.7,Loamy,Kharif,1,Sugarcane
+4,74,35,40,26.1,80,6.2,126.3,Red,Rabi,1.5,Wheat
+5,78,42,42,23.7,70,6.1,93.5,Loamy,Rabi,2,Maize
+6,69,37,34,17.9,82,6,75.2,Black,Rabi,1.1,Chickpea
+7,55,28,30,27.5,60,6.8,46.8,Sandy,Zaid,1.3,Groundnut
+8,45,30,20,28.1,52,6.4,40.1,Sandy,Zaid,0.9,Cotton
+9,88,40,38,24.3,78,6.7,110.6,Clay,Kharif,1.4,Soybean
+10,92,44,37,23.8,75,6.9,100.4,Loamy,Kharif,1,Maize
+11,50,24,28,22.4,68,5.8,52,Red,Rabi,1.6,Millet
+12,62,29,32,26.7,66,6.1,64.3,Black,Rabi,1.3,Pigeon Pea
+13,38,18,19,29.1,58,6,38.7,Sandy,Zaid,0.7,Mung Bean
+14,40,20,21,27.9,62,6.3,44.2,Red,Zaid,0.8,Urad
+15,77,36,40,24.6,70,6.8,91.5,Loamy,Rabi,1.2,Barley
+16,95,50,48,22.1,78,6.6,120.3,Clay,Kharif,1.7,Rice
+17,68,33,35,25.2,64,6.2,68.1,Black,Rabi,1.5,Lentil
+18,58,27,29,28.6,55,6.1,41.6,Sandy,Zaid,0.9,Sesame
+19,72,39,37,20.4,76,6.4,105.8,Loamy,Kharif,1.1,Sunflower
+20,65,31,33,26,66,6.5,72.6,Red,Rabi,1,Mustard

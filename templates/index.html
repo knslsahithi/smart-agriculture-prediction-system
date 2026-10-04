@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Agriculture | Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside id="sidebar" class="sidebar">
+
+    <!-- Sidebar Header -->
+
+    <div class="sidebar-header">
+
+        <div class="sidebar-logo">
+            🌱
+        </div>
+
+        <div class="sidebar-brand">
+
+            <strong>
+                Smart
+            </strong>
+
+            <span>
+                Agriculture
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- User Information -->
+
+    <div class="sidebar-user">
+
+        <div class="user-avatar">
+            {{ user_name[0] | upper }}
+        </div>
+
+        <div class="user-details">
+
+            <strong>
+                {{ user_name }}
+            </strong>
+
+            <span>
+                Farmer Dashboard
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Sidebar Navigation -->
+
+    <nav class="sidebar-nav">
+
+        <p class="nav-title">
+            MAIN MENU
+        </p>
+
+
+        <!-- Dashboard -->
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="sidebar-link active"
+        >
+
+            <span class="nav-icon">
+                🏠
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <!-- Crop Prediction -->
+
+        <a
+            href="#prediction"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                🌾
+            </span>
+
+            <span>
+                Crop Prediction
+            </span>
+
+        </a>
+
+
+        <!-- Prediction History -->
+
+        <a
+            href="{{ url_for('history') }}"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                📜
+            </span>
+
+            <span>
+                Prediction History
+            </span>
+
+        </a>
+
+
+        <!-- Model Insights -->
+
+        <a
+            href="#model-insights"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                🤖
+            </span>
+
+            <span>
+                Model Insights
+            </span>
+
+        </a>
+
+
+        <!-- Account -->
+
+        <p class="nav-title nav-title-space">
+            ACCOUNT
+        </p>
+
+
+        <!-- Change Password -->
+
+        <a
+            href="{{ url_for('change_password') }}"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                🔐
+            </span>
+
+            <span>
+                Change Password
+            </span>
+
+        </a>
+
+
+        <!-- About -->
+
+        <a
+            href="#about"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                ℹ️
+            </span>
+
+            <span>
+                About
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- Sidebar Bottom -->
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="sidebar-link logout-sidebar"
+        >
+
+            <span class="nav-icon">
+                🚪
+            </span>
+
+            <span>
+                Logout
+            </span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MOBILE SIDEBAR OVERLAY
+========================================================= -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+
+<!-- =========================================================
+     MAIN APPLICATION
+========================================================= -->
+
+<div
+    id="mainContent"
+    class="main-content"
+>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+
+        <!-- Hamburger -->
+
+        <button
+            id="menuButton"
+            class="menu-button"
+            type="button"
+            aria-label="Open menu"
+        >
+
+            ☰
+
+        </button>
+
+
+        <!-- Application Name -->
+
+        <div class="topbar-title">
+
+            <span>
+                🌱
+            </span>
+
+            <strong>
+                Smart Agriculture
+            </strong>
+
+        </div>
+
+
+        <!-- User -->
+
+        <div class="topbar-right">
+
+            <span class="topbar-welcome">
+
+                Welcome,
+                {{ user_name }}
+
+            </span>
+
+
+            <div class="topbar-avatar">
+
+                {{ user_name[0] | upper }}
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section class="dashboard-hero">
+
+        <div class="hero-overlay">
+
+            <div class="hero-content">
+
+
+                <p class="hero-label">
+
+                    MACHINE LEARNING FOR SMART FARMING
+
+                </p>
+
+
+                <h1>
+
+                    Smart Agriculture
+
+                    <br>
+
+                    Prediction System
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Make smarter farming decisions using
+                    soil and environmental data with
+                    machine learning.
+
+                </p>
+
+
+                <a
+                    href="#prediction"
+                    class="hero-button"
+                >
+
+                    🌾 Start Prediction
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DASHBOARD STATISTICS
+    ====================================================== -->
+
+    <section class="stats-section">
+
+        <div class="page-container">
+
+
+            <!-- Section Heading -->
+
+            <div class="stats-header">
+
+                <p class="section-label">
+
+                    OVERVIEW
+
+                </p>
+
+
+                <h2>
+
+                    Your Agriculture Dashboard
+
+                </h2>
+
+            </div>
+
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+
+                <!-- Total Predictions -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-icon green">
+
+                        🌾
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+
+                            Total Predictions
+
+                        </span>
+
+
+                        <strong>
+
+                            {{ prediction_count | default(0) }}
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Algorithm -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-icon blue">
+
+                        🤖
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+
+                            ML Algorithm
+
+                        </span>
+
+
+                        <strong>
+
+                            Random Forest
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Accuracy -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-icon gold">
+
+                        📊
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+
+                            Test Accuracy
+
+                        </span>
+
+
+                        <strong>
+
+                            99.55%
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Active User -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-icon purple">
+
+                        👤
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+
+                            Active User
+
+                        </span>
+
+
+                        <strong>
+
+                            {{ user_name }}
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CROP PREDICTION SECTION
+    ====================================================== -->
+
+    <section
+        id="prediction"
+        class="prediction-section"
+    >
+
+        <div class="page-container">
+
+
+            <!-- Heading -->
+
+            <div class="section-heading">
+
+
+                <p class="section-label">
+
+                    CROP RECOMMENDATION
+
+                </p>
+
+
+                <h2>
+
+                    Find the Suitable Crop
+
+                </h2>
+
+
+                <p>
+
+                    Enter the soil and environmental
+                    conditions of your agricultural land.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PREDICTION FORM
+            ================================================== -->
+
+            <form
+                id="predictionForm"
+                action="{{ url_for('predict') }}"
+                method="POST"
+                class="prediction-form"
+            >
+
+
+                <!-- =================================================
+                     SOIL PARAMETERS
+                ================================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="form-section-title">
+
+
+                        <div class="form-section-icon">
+
+                            🌱
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+
+                                Soil Parameters
+
+                            </h3>
+
+
+                            <p>
+
+                                Enter soil nutrient information
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Nitrogen -->
+
+                        <div class="form-group">
+
+                            <label for="nitrogen">
+
+                                Nitrogen (N)
+
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    id="nitrogen"
+                                    name="nitrogen"
+                                    step="any"
+                                    min="0"
+                                    placeholder="Example: 90"
+                                    required
+                                >
+
+
+                                <span>
+
+                                    kg/ha
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Phosphorus -->
+
+                        <div class="form-group">
+
+                            <label for="phosphorus">
+
+                                Phosphorus (P)
+
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    id="phosphorus"
+                                    name="phosphorus"
+                                    step="any"
+                                    min="0"
+                                    placeholder="Example: 42"
+                                    required
+                                >
+
+
+                                <span>
+
+                                    kg/ha
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Potassium -->
+
+                        <div class="form-group">
+
+                            <label for="potassium">
+
+                                Potassium (K)
+
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    id="potassium"
+                                    name="potassium"
+                                    step="any"
+                                    min="0"
+                                    placeholder="Example: 43"
+                                    required
+                                >
+
+
+                                <span>
+
+                                    kg/ha
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- pH -->
+
+                        <div class="form-group">
+
+                            <label for="ph">
+
+                                Soil pH
+
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    id="ph"
+                                    name="ph"
+                                    step="0.01"
+                                    min="0"
+                                    max="14"
+                                    placeholder="Example: 6.5"
+                                    required
+                                >
+
+
+                                <span>
+
+                                    pH
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ENVIRONMENTAL PARAMETERS
+                ================================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="form-section-title">
+
+
+                        <div class="form-section-icon weather-icon">
+
+                            ☀️
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+
+                                Environmental Parameters
+
+                            </h3>
+
+
+                            <p>
+
+                                Enter environmental conditions
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Temperature -->
+
+                        <div class="form-group">
+
+                            <label for="temperature">
+
+                                Temperature
+
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    id="temperature"
+                                    name="temperature"
+                                    step="any"
+                                    placeholder="Example: 20.8"
+                                    required
+                                >
+
+
+                                <span>
+
+                                    °C
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Humidity -->
+
+                        <div class="form-group">
+
+                            <label for="humidity">
+
+                                Humidity
+
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    id="humidity"
+                                    name="humidity"
+                                    step="any"
+                                    min="0"
+                                    max="100"
+                                    placeholder="Example: 82"
+                                    required
+                                >
+
+
+                                <span>
+
+                                    %
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Rainfall -->
+
+                        <div class="form-group">
+
+                            <label for="rainfall">
+
+                                Rainfall
+
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    id="rainfall"
+                                    name="rainfall"
+                                    step="any"
+                                    min="0"
+                                    placeholder="Example: 202.9"
+                                    required
+                                >
+
+
+                                <span>
+
+                                    mm
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PREDICT BUTTON
+                ================================================== -->
+
+                <div class="prediction-button-container">
+
+
+                    <button
+                        type="submit"
+                        id="predictButton"
+                        class="predict-button"
+                    >
+
+                        <span id="predictButtonText">
+
+                            🌾 Predict Suitable Crop
+
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+
+            <!-- =================================================
+                 PREDICTION RESULT
+            ================================================== -->
+
+            <div
+                id="predictionResult"
+                class="result-box prediction-result-hidden"
+            >
+
+
+                <div class="result-icon">
+
+                    🌾
+
+                </div>
+
+
+                <div class="result-content">
+
+
+                    <span>
+
+                        RECOMMENDED CROP
+
+                    </span>
+
+
+                    <h2 id="predictedCrop">
+
+                        -
+
+                    </h2>
+
+
+                    <p id="predictionMessage">
+
+                        Your prediction result will appear here.
+
+                    </p>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RECENT PREDICTIONS
+    ====================================================== -->
+
+    <section
+        id="recent"
+        class="recent-section"
+    >
+
+        <div class="page-container">
+
+
+            <!-- Heading -->
+
+            <div class="section-heading">
+
+
+                <p class="section-label">
+
+                    HISTORY
+
+                </p>
+
+
+                <h2>
+
+                    Recent Predictions
+
+                </h2>
+
+
+                <p>
+
+                    Your latest crop recommendations.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- History Container -->
+
+            <div id="historyContainer">
+
+
+                {% if recent_predictions %}
+
+
+                <div class="table-container">
+
+
+                    <table id="historyTable">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+
+                                    Date
+
+                                </th>
+
+
+                                <th>
+
+                                    N
+
+                                </th>
+
+
+                                <th>
+
+                                    P
+
+                                </th>
+
+
+                                <th>
+
+                                    K
+
+                                </th>
+
+
+                                <th>
+
+                                    Temperature
+
+                                </th>
+
+
+                                <th>
+
+                                    Humidity
+
+                                </th>
+
+
+                                <th>
+
+                                    pH
+
+                                </th>
+
+
+                                <th>
+
+                                    Rainfall
+
+                                </th>
+
+
+                                <th>
+
+                                    Crop
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+
+                        <tbody id="historyBody">
+
+
+                            {% for item in recent_predictions %}
+
+
+                            <tr>
+
+
+                                <td>
+
+                                    {{ item["created_at"] }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ item["nitrogen"] }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ item["phosphorus"] }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ item["potassium"] }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ item["temperature"] }} °C
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ item["humidity"] }} %
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ item["ph"] }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ item["rainfall"] }} mm
+
+                                </td>
+
+
+                                <td>
+
+
+                                    <span class="crop-badge">
+
+                                        🌾
+
+                                        {{ item["predicted_crop"] | title }}
+
+                                    </span>
+
+
+                                </td>
+
+
+                            </tr>
+
+
+                            {% endfor %}
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+                {% else %}
+
+
+                <div class="empty-history">
+
+
+                    <div>
+
+                        🌱
+
+                    </div>
+
+
+                    <h3>
+
+                        No Predictions Yet
+
+                    </h3>
+
+
+                    <p>
+
+                        Your crop predictions will appear
+                        here after you make your first prediction.
+
+                    </p>
+
+
+                </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+            <!-- Full History Button -->
+
+            <div
+                style="
+                    text-align:center;
+                    margin-top:25px;
+                "
+            >
+
+                <a
+                    href="{{ url_for('history') }}"
+                    class="hero-button"
+                    style="
+                        background:#315c35;
+                        color:white;
+                    "
+                >
+
+                    📜 View Full Prediction History
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MODEL INSIGHTS
+    ====================================================== -->
+
+    <section
+        id="model-insights"
+        class="model-section"
+    >
+
+        <div class="page-container">
+
+
+            <!-- Heading -->
+
+            <div class="section-heading">
+
+
+                <p class="section-label">
+
+                    MACHINE LEARNING
+
+                </p>
+
+
+                <h2>
+
+                    Model Performance
+
+                </h2>
+
+
+                <p>
+
+                    Classification algorithms evaluated
+                    during model development.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Models -->
+
+            <div class="model-grid">
+
+
+                <!-- Decision Tree -->
+
+                <div class="model-card">
+
+
+                    <div class="model-card-top">
+
+
+                        <span class="model-number">
+
+                            01
+
+                        </span>
+
+
+                        <span class="model-status">
+
+                            Evaluated
+
+                        </span>
+
+
+                    </div>
+
+
+                    <h3>
+
+                        Decision Tree
+
+                    </h3>
+
+
+                    <div class="accuracy">
+
+                        97.95%
+
+                    </div>
+
+
+                    <p>
+
+                        Accuracy on the selected
+                        test dataset.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Random Forest -->
+
+                <div class="model-card featured">
+
+
+                    <div class="model-card-top">
+
+
+                        <span class="model-number">
+
+                            02
+
+                        </span>
+
+
+                        <span class="model-status best">
+
+                            Best Model
+
+                        </span>
+
+
+                    </div>
+
+
+                    <h3>
+
+                        Random Forest
+
+                    </h3>
+
+
+                    <div class="accuracy">
+
+                        99.55%
+
+                    </div>
+
+
+                    <p>
+
+                        Highest measured test accuracy
+                        among the evaluated algorithms.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- KNN -->
+
+                <div class="model-card">
+
+
+                    <div class="model-card-top">
+
+
+                        <span class="model-number">
+
+                            03
+
+                        </span>
+
+
+                        <span class="model-status">
+
+                            Evaluated
+
+                        </span>
+
+
+                    </div>
+
+
+                    <h3>
+
+                        K-Nearest Neighbors
+
+                    </h3>
+
+
+                    <div class="accuracy">
+
+                        97.95%
+
+                    </div>
+
+
+                    <p>
+
+                        Accuracy after feature scaling.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- SVM -->
+
+                <div class="model-card">
+
+
+                    <div class="model-card-top">
+
+
+                        <span class="model-number">
+
+                            04
+
+                        </span>
+
+
+                        <span class="model-status">
+
+                            Evaluated
+
+                        </span>
+
+
+                    </div>
+
+
+                    <h3>
+
+                        Support Vector Machine
+
+                    </h3>
+
+
+                    <div class="accuracy">
+
+                        98.41%
+
+                    </div>
+
+
+                    <p>
+
+                        RBF kernel classification
+                        performance.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ABOUT SECTION
+    ====================================================== -->
+
+    <section
+        id="about"
+        class="about-section"
+    >
+
+        <div class="page-container">
+
+
+            <div class="section-heading">
+
+
+                <p class="section-label">
+
+                    ABOUT THE PROJECT
+
+                </p>
+
+
+                <h2>
+
+                    Smart Agriculture Prediction System
+
+                </h2>
+
+
+                <p>
+
+                    A machine learning based crop recommendation
+                    system designed to support data-driven
+                    agricultural decisions.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="about-grid">
+
+
+                <!-- Objective -->
+
+                <div class="about-card">
+
+
+                    <div class="about-icon">
+
+                        🎯
+
+                    </div>
+
+
+                    <h3>
+
+                        Objective
+
+                    </h3>
+
+
+                    <p>
+
+                        Recommend a suitable crop based on
+                        soil nutrient values and environmental
+                        conditions.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Dataset -->
+
+                <div class="about-card">
+
+
+                    <div class="about-icon">
+
+                        📊
+
+                    </div>
+
+
+                    <h3>
+
+                        Dataset
+
+                    </h3>
+
+
+                    <p>
+
+                        The primary training dataset contains
+                        crop records with N, P, K, temperature,
+                        humidity, pH and rainfall.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Machine Learning -->
+
+                <div class="about-card">
+
+
+                    <div class="about-icon">
+
+                        🤖
+
+                    </div>
+
+
+                    <h3>
+
+                        Machine Learning
+
+                    </h3>
+
+
+                    <p>
+
+                        Decision Tree, Random Forest, KNN and
+                        SVM were evaluated. Random Forest achieved
+                        the highest measured test accuracy.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Technology -->
+
+                <div class="about-card">
+
+
+                    <div class="about-icon">
+
+                        💻
+
+                    </div>
+
+
+                    <h3>
+
+                        Technology
+
+                    </h3>
+
+
+                    <p>
+
+                        Python, Pandas, Scikit-learn, Flask,
+                        HTML, CSS, JavaScript and SQLite.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <div class="footer-inner">
+
+
+            <div>
+
+
+                <strong>
+
+                    🌱 Smart Agriculture
+
+                </strong>
+
+
+                <p>
+
+                    Machine Learning based
+                    Crop Recommendation
+
+                </p>
+
+
+            </div>
+
+
+
+            <div>
+
+
+                <a href="#prediction">
+
+                    Prediction
+
+                </a>
+
+
+                <a href="{{ url_for('history') }}">
+
+                    History
+
+                </a>
+
+
+                <a href="#model-insights">
+
+                    Model Insights
+
+                </a>
+
+
+                <a href="#about">
+
+                    About
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            © 2026 Smart Agriculture Prediction System
+
+        </div>
+
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+
+const sidebar =
+    document.getElementById(
+        "sidebar"
+    );
+
+
+const overlay =
+    document.getElementById(
+        "sidebarOverlay"
+    );
+
+
+/* Open Sidebar */
+
+function openSidebar() {
+
+    sidebar.classList.add(
+        "open"
+    );
+
+    overlay.classList.add(
+        "show"
+    );
+
+}
+
+
+/* Close Sidebar */
+
+function closeSidebar() {
+
+    sidebar.classList.remove(
+        "open"
+    );
+
+    overlay.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* Hamburger Click */
+
+menuButton.addEventListener(
+    "click",
+    function () {
+
+
+        if (
+            sidebar.classList.contains(
+                "open"
+            )
+        ) {
+
+            closeSidebar();
+
+        }
+
+        else {
+
+            openSidebar();
+
+        }
+
+    }
+);
+
+
+/* Overlay Click */
+
+overlay.addEventListener(
+    "click",
+    closeSidebar
+);
+
+
+
+/* =========================================================
+   SIDEBAR LINK HANDLING
+========================================================= */
+
+
+const sidebarLinks =
+    document.querySelectorAll(
+        ".sidebar-link"
+    );
+
+
+sidebarLinks.forEach(
+    function (link) {
+
+
+        link.addEventListener(
+            "click",
+            function () {
+
+
+                if (
+                    window.innerWidth <= 900
+                ) {
+
+                    closeSidebar();
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   PREDICTION WITHOUT PAGE RELOAD
+========================================================= */
+
+
+const predictionForm =
+    document.getElementById(
+        "predictionForm"
+    );
+
+
+const predictionResult =
+    document.getElementById(
+        "predictionResult"
+    );
+
+
+const predictedCrop =
+    document.getElementById(
+        "predictedCrop"
+    );
+
+
+const predictionMessage =
+    document.getElementById(
+        "predictionMessage"
+    );
+
+
+const predictButton =
+    document.getElementById(
+        "predictButton"
+    );
+
+
+const predictButtonText =
+    document.getElementById(
+        "predictButtonText"
+    );
+
+
+
+predictionForm.addEventListener(
+    "submit",
+    async function (event) {
+
+
+        /*
+            Prevent normal form submission.
+
+            Therefore the page will NOT reload.
+        */
+
+        event.preventDefault();
+
+
+
+        /* Disable button */
+
+        predictButton.disabled = true;
+
+
+        predictButtonText.textContent =
+            "⏳ Predicting...";
+
+
+
+        /* Collect form values */
+
+        const formData =
+            new FormData(
+                predictionForm
+            );
+
+
+
+        try {
+
+
+            /* Send request to Flask */
+
+            const response =
+                await fetch(
+                    predictionForm.action,
+                    {
+
+                        method: "POST",
+
+                        body: formData,
+
+                        headers: {
+
+                            "X-Requested-With":
+                                "XMLHttpRequest"
+
+                        }
+
+                    }
+                );
+
+
+
+            /* Convert response to JSON */
+
+            const data =
+                await response.json();
+
+
+
+            /* =================================================
+               SUCCESS
+            ================================================= */
+
+
+            if (
+                response.ok &&
+                data.success
+            ) {
+
+
+                /* Display crop */
+
+                predictedCrop.textContent =
+                    data.crop;
+
+
+
+                /* Display message */
+
+                predictionMessage.textContent =
+                    data.message;
+
+
+
+                /* Show result */
+
+                predictionResult.classList.remove(
+                    "prediction-result-hidden"
+                );
+
+
+                predictionResult.classList.remove(
+                    "prediction-error"
+                );
+
+
+                predictionResult.classList.add(
+                    "prediction-result-visible"
+                );
+
+
+
+                /* Scroll to result */
+
+                setTimeout(
+                    function () {
+
+                        predictionResult.scrollIntoView(
+                            {
+                                behavior: "smooth",
+                                block: "center"
+                            }
+                        );
+
+                    },
+                    100
+                );
+
+
+
+                /* Refresh dashboard history */
+
+                await refreshDashboardData();
+
+            }
+
+
+            /* =================================================
+               ERROR
+            ================================================= */
+
+
+            else {
+
+
+                predictedCrop.textContent =
+                    "Unable to Predict";
+
+
+                predictionMessage.textContent =
+                    data.message ||
+                    "Please check the entered values.";
+
+
+                predictionResult.classList.remove(
+                    "prediction-result-hidden"
+                );
+
+
+                predictionResult.classList.add(
+                    "prediction-error"
+                );
+
+
+            }
+
+
+        }
+
+
+        catch (error) {
+
+
+            console.error(
+                "Prediction error:",
+                error
+            );
+
+
+            predictedCrop.textContent =
+                "Error";
+
+
+            predictionMessage.textContent =
+                "Unable to connect to the prediction server.";
+
+
+            predictionResult.classList.remove(
+                "prediction-result-hidden"
+            );
+
+
+            predictionResult.classList.add(
+                "prediction-error"
+            );
+
+
+        }
+
+
+        finally {
+
+
+            /* Enable button again */
+
+            predictButton.disabled = false;
+
+
+            predictButtonText.textContent =
+                "🌾 Predict Suitable Crop";
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   REFRESH RECENT HISTORY
+========================================================= */
+
+
+async function refreshDashboardData() {
+
+
+    try {
+
+
+        /*
+            Request dashboard HTML from Flask.
+            The browser does NOT navigate to it.
+        */
+
+        const response =
+            await fetch(
+                "{{ url_for('dashboard') }}"
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            return;
+
+        }
+
+
+        const html =
+            await response.text();
+
+
+
+        /* Parse returned HTML */
+
+        const parser =
+            new DOMParser();
+
+
+        const newDocument =
+            parser.parseFromString(
+                html,
+                "text/html"
+            );
+
+
+
+        /* =================================================
+           UPDATE HISTORY
+        ================================================= */
+
+
+        const newHistory =
+            newDocument.getElementById(
+                "historyContainer"
+            );
+
+
+        const currentHistory =
+            document.getElementById(
+                "historyContainer"
+            );
+
+
+        if (
+            newHistory &&
+            currentHistory
+        ) {
+
+            currentHistory.innerHTML =
+                newHistory.innerHTML;
+
+        }
+
+
+
+        /* =================================================
+           UPDATE STATISTICS
+        ================================================= */
+
+
+        const newStats =
+            newDocument.querySelector(
+                ".stats-grid"
+            );
+
+
+        const currentStats =
+            document.querySelector(
+                ".stats-grid"
+            );
+
+
+        if (
+            newStats &&
+            currentStats
+        ) {
+
+            currentStats.innerHTML =
+                newStats.innerHTML;
+
+        }
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+            "Dashboard refresh error:",
+            error
+        );
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
